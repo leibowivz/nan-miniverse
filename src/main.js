@@ -52,7 +52,7 @@ async function main() {
       type: 'websocket',
       url: wsUrl,
     },
-    citizens: [],
+    citizens: sceneData?.citizens ?? [],
     defaultSprites: SPRITES,
     scale: 2,
     width: gridCols * tileSize,
