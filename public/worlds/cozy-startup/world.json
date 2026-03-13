@@ -337,5 +337,13 @@
     "concrete_accent": "world_assets/tiles/concrete_accent.png",
     "tileset": "world_assets/tiles/tileset.png"
   },
-  "citizens": []
+  "citizens": [
+    {
+      "agentId": "openriot",
+      "name": "OpenRiot 🔥",
+      "sprite": "nova",
+      "position": "wooden_desk_single_4_0",
+      "type": "agent"
+    }
+  ]
 }
