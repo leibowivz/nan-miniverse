@@ -1,4 +1,4 @@
-import { Miniverse, PropSystem } from '@miniverse/core';
+import { Miniverse, PropSystem, Editor } from '@miniverse/core';
 
 const WORLD_ID = 'cozy-startup';
 const basePath = `/worlds/${WORLD_ID}`;
@@ -93,6 +93,27 @@ async function main() {
 
   mv.addLayer({ order: 5, render: (ctx) => props.renderBelow(ctx) });
   mv.addLayer({ order: 15, render: (ctx) => props.renderAbove(ctx) });
+
+  // Editor mode - press 'E' to toggle
+  const canvas = container.querySelector('canvas');
+  if (canvas) {
+    const editor = new Editor({
+      canvas,
+      props,
+      miniverse: mv,
+      worldId: WORLD_ID,
+      apiBase: '',
+    });
+    
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'e' || e.key === 'E') {
+        editor.toggle();
+      }
+    });
+    
+    // Also expose globally for debugging
+    window.editor = editor;
+  }
 }
 
 main().catch(console.error);
