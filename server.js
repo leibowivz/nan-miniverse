@@ -56,8 +56,8 @@ const server = createServer((req, res) => {
     return;
   }
 
-  // Proxy API requests
-  if (url.pathname.startsWith('/api/')) return proxy(req, res);
+  // Proxy API and WebSocket requests
+  if (url.pathname.startsWith('/api/') || url.pathname === '/ws') return proxy(req, res);
 
   // Serve static: dist first, then public
   const clean = decodeURIComponent(url.pathname);
